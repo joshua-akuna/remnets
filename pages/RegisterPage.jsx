@@ -8,13 +8,18 @@ export default function RegisterPage() {
     ev.preventDefault();
 
     const url = 'http://localhost:4000/api/v1/register';
-    const data = await fetch(url, {
+    await fetch(url, {
       method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },
-    });
-    const result = await data.json();
-    console.log(result);
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   }
 
   return (
