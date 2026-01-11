@@ -7,7 +7,7 @@ export default function RegisterPage() {
   async function registerUser(ev) {
     ev.preventDefault();
 
-    const url = 'http://localhost:4000/api/v1/register';
+    const url = 'http://localhost:4000/api/v1/auth/register';
     await fetch(url, {
       method: 'POST',
       body: JSON.stringify({ username, password }),
