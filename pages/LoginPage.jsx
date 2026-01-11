@@ -17,7 +17,11 @@ export default function LoginPage() {
       credentials: 'include',
     });
 
-    setRedirect(response.status === 200);
+    if (response.status === 200) {
+      setRedirect(true);
+    } else {
+      alert('Invalid username or password.');
+    }
   }
 
   if (redirect) {
