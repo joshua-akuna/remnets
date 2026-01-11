@@ -1,25 +1,27 @@
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
 export default function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [redirect, setRedirect] = useState(false);
 
   async function loginUser(ev) {
     ev.preventDefault();
 
-    const url = 'http://localhost:4000/api/v1/login';
-    await fetch(url, {
+    const url = 'http://localhost:4000/api/v1/auth/login';
+    const response = await fetch(url, {
       method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Success:', data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+      credentials: 'include',
+    });
+
+    setRedirect(response.status === 200);
+  }
+
+  if (redirect) {
+    return <Navigate to='/' />;
   }
 
   return (
