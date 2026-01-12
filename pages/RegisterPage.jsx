@@ -14,12 +14,8 @@ export default function RegisterPage() {
       headers: { 'Content-Type': 'application/json' },
     })
       .then((response) => response.json())
-      .then((data) => {
-        console.log('Success:', data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+      .then((data) => console.log('Success:', data))
+      .catch((error) => console.error('Error:', error));
   }
 
   return (
