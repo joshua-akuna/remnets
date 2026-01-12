@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 
 export default function Header() {
-  const [username, setUsername] = useState(null);
+  // const [username, setUsername] = useState(null);
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,7 +18,7 @@ export default function Header() {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setUsername(data.username);
+        setUser(data);
       } catch (error) {
         throw new Error('Error fetching profile: ' + error.message);
       }
@@ -35,11 +37,15 @@ export default function Header() {
         throw new Error('Network response was not ok');
       }
       // console.log(await fetchData.json());
-      setUsername(null);
+      // setUsername(null);
+      setUser(null);
     } catch (error) {
       console.error('Error during logout:', error.message);
     }
   }
+
+  const username = user?.username;
+  // console.log(username);
 
   return (
     <header>
@@ -49,6 +55,7 @@ export default function Header() {
         </Link>
       </h2>
       <nav>
+        {/* to replace true with username of user */}
         {username ? (
           <>
             <Link to='/create'>Create New Post</Link>
