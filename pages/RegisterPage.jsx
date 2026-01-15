@@ -1,12 +1,16 @@
 import { useState } from 'react';
 
 export default function RegisterPage() {
+  // register form states
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  // async function to register new user
   async function registerUser(ev) {
+    // prevents form default bahaviour
     ev.preventDefault();
 
+    // sends a post request to the backend register endpoint
     const url = 'http://localhost:4000/api/v1/auth/register';
     await fetch(url, {
       method: 'POST',
@@ -18,6 +22,7 @@ export default function RegisterPage() {
       .catch((error) => console.error('Error:', error));
   }
 
+  // JSX form for the register page
   return (
     <form className='form' onSubmit={registerUser}>
       <h1>Register</h1>

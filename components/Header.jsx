@@ -2,38 +2,50 @@ import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 
+// JSX for Header component
 export default function Header() {
   // const [username, setUsername] = useState(null);
+  // variables from React Context
   const { user, setUser } = useContext(UserContext);
 
+  // fetches the user profile when the Header component mounts
   useEffect(() => {
+    // the async function fetches the user profile
     const fetchData = async () => {
+      // backend url
       const url = 'http://localhost:4000/api/v1/auth/profile';
       try {
         const response = await fetch(url, {
           method: 'GET',
           credentials: 'include',
         });
+        // throw error if fetch fails
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
+        // if fetch is successful, returns javascript object
         const data = await response.json();
+        // set the setUser Context
         setUser(data);
       } catch (error) {
         throw new Error('Error fetching profile: ' + error.message);
       }
     };
+    // invokes the fetchData function
     fetchData();
   }, []);
 
+  // async function for logout
   async function logout() {
+    // logout url
     const url = 'http://localhost:4000/api/v1/auth/logout';
     try {
-      const fetchData = await fetch(url, {
+      const response = await fetch(url, {
         credentials: 'include',
         method: 'POST',
       });
-      if (!fetchData.ok) {
+      // throws error if response fails
+      if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       // console.log(await fetchData.json());
@@ -44,6 +56,7 @@ export default function Header() {
     }
   }
 
+  // initialize username for conditional rendering
   const username = user?.username;
   // console.log(username);
 
@@ -55,7 +68,8 @@ export default function Header() {
         </Link>
       </h2>
       <nav>
-        {/* to replace true with username of user */}
+        {/* if username, displays create New Post and 
+        Logout else displays Login and Register */}
         {username ? (
           <>
             <Link to='/create'>Create New Post</Link>
