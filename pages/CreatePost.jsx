@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
+import { Navigate } from 'react-router-dom';
 
 // Define custom toolbar modules
 const modules = {
@@ -54,6 +55,7 @@ export default function CreatePost() {
   const [summary, setSummary] = useState('');
   const [content, setContent] = useState('');
   const [files, setFiles] = useState(null);
+  const [redirect, setRedirect] = useState(false);
 
   async function createPost(ev) {
     ev.preventDefault();
@@ -70,7 +72,13 @@ export default function CreatePost() {
       credentials: 'include',
       body: formData,
     });
-    console.log(await response.json());
+    if (response.ok) {
+      setRedirect(true);
+    }
+  }
+
+  if (redirect) {
+    return <Navigate to={'/'} />;
   }
 
   return (
