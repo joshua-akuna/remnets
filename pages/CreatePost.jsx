@@ -66,7 +66,7 @@ export default function CreatePost() {
     formData.set('content', content);
     formData.set('file', files[0]);
 
-    const url = 'http://localhost:4000/api/v1/post';
+    const url = 'http://localhost:4000/api/v1/posts';
     const response = await fetch(url, {
       method: 'POST',
       credentials: 'include',
@@ -109,7 +109,7 @@ export default function CreatePost() {
         onChange={setContent}
         placeholder='Start writing...'
       />
-      <button>Create Post</button>
+      <button style={{ marginTop: '10px' }}>Create Post</button>
     </form>
   );
 }

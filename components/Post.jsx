@@ -1,3 +1,5 @@
+import { formatISO9075 } from 'date-fns/fp';
+
 export default function Post(props) {
   return (
     <div className='post'>
@@ -8,9 +10,9 @@ export default function Post(props) {
         <h2>{props.title}</h2>
         <p className='info'>
           <a href='' className='author'>
-            Akuna Joshua
+            {props.author.username}
           </a>
-          <time>{props.createdAt}</time>
+          <time>{formatISO9075(new Date(props.createdAt))}</time>
         </p>
         <p className='summary'>{props.summary}</p>
       </div>
