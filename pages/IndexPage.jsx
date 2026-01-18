@@ -15,9 +15,11 @@ export default function IndexPage() {
     fetchData();
   }, []);
 
-  console.log(posts);
-
   return (
-    <>{posts.length > 0 ? posts.map((post) => <Post {...post} />) : null}</>
+    <>
+      {posts.length > 0
+        ? posts.map((post) => <Post key={post._id} {...post} />)
+        : null}
+    </>
   );
 }
