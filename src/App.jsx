@@ -8,6 +8,7 @@ import CreatePost from '../pages/CreatePost';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import { UserContextProvider } from '../context/UserContext';
+import PostPage from '../pages/PostPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path='/login' element={<LoginPage />} />
             <Route path='/register' element={<RegisterPage />} />
             <Route path='/create' element={<CreatePost />} />
+            <Route path='/posts/:id' element={<PostPage />} />
           </Route>
         </Routes>
       </Router>
