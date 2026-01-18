@@ -5,7 +5,7 @@ export default function IndexPage() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const url = 'http://localhost:4000/api/v1/post';
+    const url = 'http://localhost:4000/api/v1/posts';
     async function fetchData() {
       const response = await fetch(url, {
         credentials: 'include',
