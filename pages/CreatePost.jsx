@@ -40,7 +40,7 @@ export default function CreatePost() {
     <form onSubmit={createPost}>
       <input
         type='text'
-        placeholder='Title'
+        placeholder='Enter Post Title'
         value={title}
         onChange={(ev) => setTitle(ev.target.value)}
       />
