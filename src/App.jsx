@@ -1,3 +1,5 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { UserContextProvider } from '../context/UserContext';
 import Header from '../components/Header';
 import Post from '../components/Post';
 import Layout from '../components/Layout';
@@ -5,10 +7,9 @@ import IndexPage from '../pages/IndexPage';
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
 import CreatePost from '../pages/CreatePost';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css';
-import { UserContextProvider } from '../context/UserContext';
 import PostPage from '../pages/PostPage';
+import EditPost from '../pages/EditPage';
+import './App.css';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path='/register' element={<RegisterPage />} />
             <Route path='/create' element={<CreatePost />} />
             <Route path='/posts/:id' element={<PostPage />} />
+            <Route path='/edit/:id' element={<EditPost />} />
           </Route>
         </Routes>
       </Router>

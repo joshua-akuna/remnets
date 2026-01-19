@@ -36,7 +36,7 @@ export default function PostPage() {
       <div className='author'>by {postInfo?.author.username}</div>
       {user?.id === postInfo?.author._id && (
         <div className='btn-row'>
-          <Link className='btn edit' to={`edit/${postInfo?._id}`}>
+          <Link className='btn edit' to={`/edit/${postInfo?._id}`}>
             Edit Post
           </Link>
           <a className='btn delete' href=''>
