@@ -53,6 +53,12 @@ div.post {
   margin-bottom: 25px;
 }
 
+@media screen and (max-width: 600px) {
+  div.post {
+    grid-template-columns: 1fr;
+  }
+}
+
 div.post div.texts h2 {
   font-size: 1.5em;
 }
@@ -102,4 +108,65 @@ button {
 button:hover {
   background-color: #333;
   cursor: pointer;
+}
+
+/* ---------- PostPage css --------------- */
+div.post-page div.image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+div.image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+div.post-page h2,
+div.post-page .time,
+div.post-page .author {
+  display: block;
+  text-align: center;
+}
+
+div.post-page .time {
+  color: #aaa;
+  font-size: 0.7rem;
+}
+
+div.post-page div.author {
+  margin-bottom: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.q1-editor {
+  white-space: wrap;
+  word-break: break-word;
+  width: 100%;
+  line-height: 1.5em;
+}
+
+div.btn-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.btn {
+  padding: 5px 10px;
+  color: white;
+  border-radius: 5px;
+}
+
+.edit {
+  background-color: #222;
+}
+
+.delete {
+  background-color: red;
 }
