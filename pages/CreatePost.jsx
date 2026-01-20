@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 import { Navigate } from 'react-router-dom';
 import Editor from '../components/Editor';
@@ -42,18 +41,21 @@ export default function CreatePost() {
         type='text'
         placeholder='Enter Post Title'
         value={title}
+        required
         onChange={(ev) => setTitle(ev.target.value)}
       />
       <input
         type='text'
-        placeholder='Summary'
+        placeholder='Enter Post Summary'
         value={summary}
+        required
         onChange={(ev) => setSummary(ev.target.value)}
       />
       <input
         type='file'
         name='file'
         id='file'
+        required
         onChange={(ev) => setFiles(ev.target.files)}
       />
       <Editor value={content} onChange={setContent} />
