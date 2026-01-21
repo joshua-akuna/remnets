@@ -1,11 +1,12 @@
 import { formatISO9075 } from 'date-fns';
 import { useContext, useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Navigate } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 
 export default function PostPage() {
+  const [redirect, setRedirect] = useState(null);
+  const [postInfo, setPostInfo] = useState(false);
   const { id } = useParams();
-  const [postInfo, setPostInfo] = useState(null);
   const { user } = useContext(UserContext);
 
   useEffect(() => {
@@ -14,7 +15,7 @@ export default function PostPage() {
         const url = `http://localhost:4000/api/v1/posts/${id}`;
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         setPostInfo(data);
       } catch (error) {
         throw new Error(error.message);
@@ -22,6 +23,21 @@ export default function PostPage() {
     }
     fetchPost();
   }, []);
+
+  async function deletePost() {
+    const url = `http://localhost:4000/api/v1/posts/${id}`;
+    const response = await fetch(url, {
+      method: 'DELETE',
+      credentials: 'include',
+    });
+    if (response.ok) {
+      setRedirect(true);
+    }
+  }
+
+  if (redirect) {
+    return <Navigate to={'/'} />;
+  }
 
   if (!postInfo) {
     return '';
@@ -39,9 +55,9 @@ export default function PostPage() {
           <Link className='btn edit' to={`/edit/${postInfo?._id}`}>
             Edit Post
           </Link>
-          <a className='btn delete' href=''>
+          <Link className='btn delete' onClick={deletePost}>
             Delete Post
-          </a>
+          </Link>
         </div>
       )}
       <div className='image'>
