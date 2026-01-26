@@ -14,7 +14,8 @@ export default function LoginPage() {
     // prevents form from default behaviour
     ev.preventDefault();
     // backend login endpoint
-    const url = 'http://localhost:4000/api/v1/auth/login';
+    // const url = 'http://localhost:4000/api/v1/auth/login';
+    const url = 'https://memnets-api.vercel.app/api/v1/auth/login';
     try {
       // sends a post request to the backend login endpoint
       const response = await fetch(url, {

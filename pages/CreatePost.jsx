@@ -20,7 +20,8 @@ export default function CreatePost() {
     formData.set('content', content);
     formData.set('file', files[0]);
 
-    const url = 'http://localhost:4000/api/v1/posts';
+    // const url = 'http://localhost:4000/api/v1/posts';
+    const url = 'https://memnets-api.vercel.app/api/v1/posts';
     const response = await fetch(url, {
       method: 'POST',
       credentials: 'include',

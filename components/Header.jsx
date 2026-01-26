@@ -13,7 +13,8 @@ export default function Header() {
     // the async function fetches the user profile
     const fetchData = async () => {
       // backend url
-      const url = 'http://localhost:4000/api/v1/auth/profile';
+      // const url = 'http://localhost:4000/api/v1/auth/profile';
+      const url = 'https://memnets-api.vercel.app/api/v1/auth/profile';
       try {
         const response = await fetch(url, {
           method: 'GET',
@@ -38,7 +39,8 @@ export default function Header() {
   // async function for logout
   async function logout() {
     // logout url
-    const url = 'http://localhost:4000/api/v1/auth/logout';
+    // const url = 'http://localhost:4000/api/v1/auth/logout';
+    const url = `https://memnets-api.vercel.app/api/v1/auth/logout`;
     try {
       const response = await fetch(url, {
         credentials: 'include',

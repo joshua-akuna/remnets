@@ -5,7 +5,8 @@ export default function IndexPage() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const url = 'http://localhost:4000/api/v1/posts';
+    // const url = 'http://localhost:4000/api/v1/posts';
+    const url = 'https://memnets-api.vercel.app/api/v1/posts';
     async function fetchData() {
       const response = await fetch(url, {
         credentials: 'include',

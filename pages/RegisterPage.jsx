@@ -11,7 +11,8 @@ export default function RegisterPage() {
     ev.preventDefault();
 
     // sends a post request to the backend register endpoint
-    const url = 'http://localhost:4000/api/v1/auth/register';
+    // const url = 'http://localhost:4000/api/v1/auth/register';
+    const url = 'https://memnets-api.vercel.app/api/v1/auth/register';
     await fetch(url, {
       method: 'POST',
       body: JSON.stringify({ username, password }),
