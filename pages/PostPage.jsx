@@ -13,7 +13,7 @@ export default function PostPage() {
     async function fetchPost() {
       try {
         // const url = `http://localhost:4000/api/v1/posts/${id}`;
-        const url = `https://memnets-api.vercel.app/api/v1/posts/${id}`;
+        const url = `https://memnet-api.vercel.app/api/v1/posts/${id}`;
         const response = await fetch(url);
         const data = await response.json();
         // console.log(data);
@@ -27,7 +27,7 @@ export default function PostPage() {
 
   async function deletePost() {
     // const url = `http://localhost:4000/api/v1/posts/${id}`;
-    const url = `https://memnets-api.vercel.app/api/v1/posts/${id}`;
+    const url = `https://memnet-api.vercel.app/api/v1/posts/${id}`;
     const response = await fetch(url, {
       method: 'DELETE',
       credentials: 'include',
@@ -63,7 +63,9 @@ export default function PostPage() {
         </div>
       )}
       <div className='image'>
-        <img src={`https://memnets-api.vercel.app/${postInfo?.cover}`} alt='' />
+        {/* <img src={`https://memnets-api.vercel.app/${postInfo?.cover}`} alt='' /> */}
+        {/* <img src={`http://localhost:4000${postInfo?.cover}`} alt='' /> */}
+        <img src={postInfo?.cover} alt={postInfo?.cover} />
       </div>
       <div
         className='q1-editor'

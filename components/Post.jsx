@@ -6,7 +6,9 @@ export default function Post(props) {
     <div className='post'>
       <div className='image'>
         <Link to={`posts/${props._id}`}>
-          <img src={`https://memnets-api.vercel.app${props.cover}`} alt='' />
+          {/* <img src={`https://memnet-api.vercel.app${props.cover}`} alt='' /> */}
+          {/* <img src={`http://localhost:4000${props.cover}`} alt='' /> */}
+          <img src={props.cover} alt={props.cover} />
         </Link>
       </div>
       <div className='texts'>

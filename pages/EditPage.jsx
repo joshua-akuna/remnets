@@ -20,7 +20,7 @@ export default function EditPost() {
     formData.set('file', files?.[0]);
 
     // const url = `http://localhost:4000/api/v1/posts/${id}`;
-    const url = `https://memnets-api.vercel.app/api/v1/posts/${id}`;
+    const url = `https://memnet-api.vercel.app/api/v1/posts/${id}`;
     const response = await fetch(url, {
       method: 'PUT',
       credentials: 'include',
