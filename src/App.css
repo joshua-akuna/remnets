@@ -57,6 +57,11 @@ div.post {
   div.post {
     grid-template-columns: 1fr;
   }
+
+  div.image {
+    display: grid;
+    place-items: center;
+  }
 }
 
 div.post div.texts h2 {
