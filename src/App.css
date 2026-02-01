@@ -39,11 +39,32 @@ header a {
 
 header a.logo {
   font-weight: bold;
+  color: #a76e2a;
 }
 
 header nav {
   display: flex;
   gap: 15px;
+}
+
+header nav a {
+  position: relative;
+  color: #a76e2a;
+}
+
+header nav a::after {
+  content: '';
+  background: #a76e2a;
+  height: 3px;
+  width: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: 1s ease-in;
+}
+
+header nav a:hover::after {
+  width: 100%;
 }
 
 div.post {
