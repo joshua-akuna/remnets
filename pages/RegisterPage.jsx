@@ -22,9 +22,10 @@ export default function RegisterPage() {
         body: JSON.stringify({ username, password }),
         headers: { 'Content-Type': 'application/json' },
       });
-      const registerData = await registerResponse.json();
-      console.log('Success:', registerData);
-      setRedirect(true);
+      // const registerData = await registerResponse.json();
+      if (registerResponse.ok) {
+        setRedirect(true);
+      }
     } catch (error) {
       console.error('Error:', error);
     }
