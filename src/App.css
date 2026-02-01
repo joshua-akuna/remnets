@@ -59,8 +59,7 @@ div.post {
   }
 
   div.image {
-    display: grid;
-    place-items: center;
+    margin: 0 auto;
   }
 }
 
